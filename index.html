@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Interactive Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-content">
+            <h1 class="welcome-title">
+                <span class="word">
+                    <span class="letter">E</span>
+                    <span class="letter">x</span>
+                    <span class="letter">p</span>
+                    <span class="letter">l</span>
+                    <span class="letter">o</span>
+                    <span class="letter">r</span>
+                    <span class="letter">e</span>
+                </span>
+                <span class="word">
+                    <span class="letter">o</span>
+                    <span class="letter">u</span>
+                    <span class="letter">r</span>
+                </span>
+                <span class="word">
+                    <span class="letter">l</span>
+                    <span class="letter">a</span>
+                    <span class="letter">n</span>
+                    <span class="letter">d</span>
+                    <span class="letter">s</span>
+                </span>
+            </h1>
+            <p class="welcome-desc">
+                Browse the map and click on the red dots to find out more
+            </p>
+            <button id="explore-btn" class="explore-button">
+                <span>Explore</span>
+                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+        <div class="welcome-bg-pattern"></div>
+    </div>
+
+    <!-- Main Map Screen -->
+    <div id="map-screen" class="screen">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-spacer"></div>
+            <nav class="header-nav">
+                <button id="toggle-effects" class="nav-btn" title="Night Mode">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </button>
+                <button id="toggle-locations" class="nav-btn" title="Locations">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Drag Hint -->
+        <div id="drag-hint" class="drag-hint">
+            <span>Tap and drag to explore</span>
+            <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6.9 12.4V6.6a1.4 1.4 0 1 1 2.8 0v5.8"/>
+                <path d="M9.7 11.6V5a1.4 1.4 0 1 1 2.8 0v6.6"/>
+                <path d="M12.5 12V6.6a1.4 1.4 0 1 1 2.8 0v5.4"/>
+                <path d="M15.3 12.8v-3a1.4 1.4 0 1 1 2.8 0v5.4a6.2 6.2 0 0 1-6.2 6.2H10a6.2 6.2 0 0 1-5.2-2.8L3 15.6"/>
+            </svg>
+        </div>
+
+        <!-- Locations Sidebar -->
+        <aside id="locations-sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Locations</h3>
+                <button id="close-sidebar" class="close-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="locations-list" id="locations-list">
+                <!-- Locations will be added dynamically -->
+            </ul>
+        </aside>
+
+        <!-- Location Detail Panel -->
+        <div id="location-detail" class="location-detail">
+            <div class="detail-content">
+                <button id="close-detail" class="close-detail-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back to map</span>
+                </button>
+                <div class="detail-image-container">
+                    <img id="detail-image" src="" alt="">
+                    <div class="detail-image-overlay"></div>
+                </div>
+                <div class="detail-info">
+                    <h2 id="detail-title"></h2>
+                    <p id="detail-description"></p>
+                    <div class="detail-meta">
+                        <span id="detail-category"></span>
+                        <span id="detail-rating"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compass -->
+        <div class="compass" id="compass">
+            <div class="compass-needle">
+                <span class="compass-n">N</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
