@@ -2,6 +2,10 @@
 
 An interactive 3D map built with Three.js, featuring location markers, smooth camera animations, and day/night mode.
 
+## Demo
+
+🔗 **Live Demo**: [https://3d-map-fffshiyu.vercel.app](https://3d-map-fffshiyu.vercel.app)
+
 ## Screenshot
 
 ![3D Map Screenshot](截屏2025-12-14%2020.51.10.png)
