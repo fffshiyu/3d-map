@@ -8,6 +8,10 @@
   <img src="https://img.shields.io/badge/Vite-5.0-646cff?style=flat-square&logo=vite" />
 </p>
 
+<p align="center">
+  <strong>🔗 Live Demo: <a href="https://shanghai-landmarks.vercel.app">shanghai-landmarks.vercel.app</a></strong>
+</p>
+
 A high-performance 3D geospatial visualization application that renders real-world OpenStreetMap data in a WebGL environment. This project demonstrates advanced frontend engineering capabilities including GPU-accelerated rendering, real-time data processing, and complex state management.
 
 ## Architecture Overview
