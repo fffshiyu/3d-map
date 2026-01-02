@@ -5,7 +5,6 @@ import { useStore } from '../../store/useStore';
 
 // 树木颜色 - 参考原项目
 const TREE_COLOR_LIGHT = '#7cb342';
-const TREE_COLOR_DARK = '#558b2f';
 const TREE_COLOR_NIGHT = '#1a3a1a';
 const TRUNK_COLOR_DAY = '#8B4513';
 const TRUNK_COLOR_NIGHT = '#2a1a0a';

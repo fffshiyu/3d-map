@@ -16,9 +16,7 @@ const BOUNDS = {
 };
 
 // 上海中心大厦高度（真实高度632米，作为参考）
-const SHANGHAI_TOWER_HEIGHT = 632;
-// 3D场景中上海中心大厦的高度
-const MAX_3D_HEIGHT = 32; // 632 * 0.05 ≈ 32
+// 3D场景中高度缩放因子为 0.05，所以 632m -> ~32 units
 
 // 坐标转换：经纬度 -> 3D 坐标
 export function latLngToPosition(lat: number, lng: number, scale: number = 8000): [number, number, number] {

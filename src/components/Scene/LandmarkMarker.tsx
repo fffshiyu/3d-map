@@ -61,7 +61,7 @@ export function LandmarkMarker({ landmark, onClick }: LandmarkMarkerProps) {
   const buildingEmissive = isNightMode ? landmark.color : '#000000';
   
   // 处理点击
-  const handleClick = (e: THREE.Event) => {
+  const handleClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
     onClick(landmark);
   };
